@@ -1,13 +1,12 @@
-// TODO 4:
-// This component re-renders for EVERY product whenever the parent renders.
-// To optimize this, wrap ProductRow with `React.memo` so it only re-renders
-// when its props actually change.
-//
+import { memo } from 'react';
+
+// TODO 4: COMPLETED - Wrapped component with React.memo
+// This component now only re-renders when its props actually change.
 // After implementing memo + useCallback in the parent,
 // clicking the favorite button should ONLY re-render the changed row,
 // not all of them.
 
-function ProductRow({ product, onToggleFavorite }) {
+const ProductRow = memo(function ProductRow({ product, onToggleFavorite }) {
     console.log("Row render:", product.name);
   
     return (
@@ -22,7 +21,7 @@ function ProductRow({ product, onToggleFavorite }) {
         </td>
       </tr>
     );
-  }
+  });
   
   export default ProductRow;
   
